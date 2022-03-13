@@ -37,7 +37,9 @@ const useStyles=makeStyles (theme =>({
 
 export default function SearchFoodItem(props) {
 
-  const {addFoodItem}=props;
+  const {values,setValues}=props;
+
+  let orderedFoodItems = values.orderDetails
 
   const [foodItems,setFoodItems]=useState([])
   const [searchList,setSearchList]=useState([]);
@@ -64,6 +66,26 @@ export default function SearchFoodItem(props) {
       setSearchList(x);
   },[searchKey])
 
+  //api tarafında ki oluşturduğumuz modellerde ki aynı itemleri buraya ekliyoruz...
+
+  const addFoodItem = foodItem =>{
+    let x={
+      orderMasterId :values.orderMasterId,
+      orderDetailId :0,
+      foodItemId:foodItem.foodItemId,
+      quantity:1,
+      foodItemPrice:foodItem.price,
+      foodItemName:foodItem.foodItemName
+
+    }
+    setValues({
+      ...values,
+      orderDetails:[...values.orderDetails, x]
+    })
+  }
+
+
+
   return (
     <>
     <Paper className={classes.searchPaper}>
@@ -80,7 +102,8 @@ export default function SearchFoodItem(props) {
       {
         searchList.map((item,idx)=>(
           <ListItem
-            key={idx}>
+            key={idx}
+            onClick={e=> addFoodItem(item)}>
               <ListItemText
               primary={item.foodItemName}
               secondary={'$' + item.price}/>
