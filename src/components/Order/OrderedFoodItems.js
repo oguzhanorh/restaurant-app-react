@@ -107,7 +107,7 @@ export default function OrderedFoodItems(props) {
                   <Button onClick={e=> updateQuantity(idx,1)}>+</Button>
                 </ButtonGroup>
                 <span className={classes.totalPerItem}>
-                  {'$' + item.quantity * item.foodItemPrice}
+                  {'TL' + item.quantity * item.foodItemPrice}
                 </span>
               </>
             }

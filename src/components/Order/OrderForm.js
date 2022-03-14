@@ -174,7 +174,7 @@ export default function OrderForm(props) {
             value={values.gTotal}  
             InputProps ={{startAdornment:<InputAdornment
               className={classes.adornmentText}
-              position="start">$</InputAdornment>
+              position="start">TL</InputAdornment>
             
             }}          
             />
@@ -193,7 +193,7 @@ export default function OrderForm(props) {
             size="large"
             onClick={openListOfOrders}
             startIcon={<ReorderIcon/>}
-            >Orders</Button>
+            >Siparişler</Button>
        </Grid>
      </Grid>
    </Form>
